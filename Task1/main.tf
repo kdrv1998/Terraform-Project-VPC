@@ -10,44 +10,50 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet1
-  tags                    = var.tags
   map_public_ip_on_launch = true
+  availability_zone       = "${var.region}a"
+  tags                    = var.tags
 }
 
 resource "aws_subnet" "public2" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet2
-  tags                    = var.tags
+  availability_zone       = "${var.region}b"
   map_public_ip_on_launch = true
+  tags                    = var.tags
 }
 
 resource "aws_subnet" "public3" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet3
-  tags                    = var.tags
+  availability_zone       = "${var.region}c"
   map_public_ip_on_launch = true
+  tags                    = var.tags
 }
 
 
 resource "aws_subnet" "private1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.private_subnet1
-  tags                    = var.tags
+  availability_zone       = "${var.region}a"
   map_public_ip_on_launch = false
+  tags                    = var.tags
 }
 
 resource "aws_subnet" "private2" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.private_subnet2
-  tags                    = var.tags
+  availability_zone       = "${var.region}b"
   map_public_ip_on_launch = false
+  tags                    = var.tags
 }
 
 resource "aws_subnet" "private3" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.private_subnet3
-  tags                    = var.tags
+  availability_zone       = "${var.region}c"
   map_public_ip_on_launch = false
+  tags                    = var.tags
 }
 
 
